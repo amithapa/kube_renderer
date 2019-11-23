@@ -38,9 +38,12 @@ class KubeRenderer(object):
 
     def __setup_args(self):
         parser = argparse.ArgumentParser(description='Generate Kubernetes Deployment Files.')
-        parser.add_argument('--instance_status', type=str, choices=["production", "staging"], help='Instance Status.')
-        parser.add_argument('--docker_image_version', type=str, help='Docker Image version.')
-        parser.add_argument('--base_dir', type=str, help='Base directory where your deploy_files exist')
+        parser.add_argument('--instance_status', type=str, choices=["production", "staging"], help='Instance Status.',
+                            required=True)
+        parser.add_argument('--docker_image_version', type=str, help='Docker Image version.',
+                            required=True)
+        parser.add_argument('--base_dir', type=str, help='Base directory where your deploy_files exist',
+                            required=True)
 
         args = parser.parse_args()
         self.__instance_status = args.instance_status
