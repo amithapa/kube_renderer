@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-example
+  namespace: {{ constants["deploy_env_status"] }}-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      module: example
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        module: example
+    spec:
+      containers:
+      - image: {{ constants[constants["deploy_env_status"]]["example"]["image"] }}:{{ constants["docker_image_version"] }}
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "50m"
+          limits:
+            memory: "300Mi"
+            cpu: "200m"
+        imagePullPolicy: Always
+        name: container-example
+        ports:
+        - name: p-example
+          containerPort: 9876
+        command: ["python3", "/app/api.py"]

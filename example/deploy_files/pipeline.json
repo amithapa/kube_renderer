@@ -1,0 +1,7 @@
+{
+  "namespace": "app",
+  "module": "example",
+  "major_version": "v1",
+  "docker_file": "",
+  "docker_context": "",
+}

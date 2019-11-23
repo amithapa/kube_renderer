@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-example
+  namespace: {{ constants["deploy_env_status"] }}-app
+spec:
+  ports:
+    - port: 9876
+      targetPort: p-example
+      nodePort: {{ constants[constants["deploy_env_status"]]["example"]["node_port"] }}
+  type: NodePort
+  externalTrafficPolicy: Local
+  selector:
+    module: example

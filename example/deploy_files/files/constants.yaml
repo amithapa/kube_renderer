@@ -1,0 +1,9 @@
+production:
+  example: &example
+    image: amithapa/example
+    node_port: 31000
+
+staging:
+  example:
+    <<: *example
+    node_port: 32000

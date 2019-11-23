@@ -1,0 +1,7 @@
+{% include 'files/namespace.yaml' %}
+
+---
+{% include 'files/service.yaml' %}
+
+---
+{% include 'files/deployment.yaml' %}
